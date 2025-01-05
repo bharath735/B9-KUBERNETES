@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-backend-service
+  labels:
+    app: backend-restapp
+    tier: backend
+spec:
+  type: ExternalName  # Maps to an external DNS name
+  externalName: example.com # External DNS name
+  ports:
+    - name: http
+      port: 80         # Service Port
+      targetPort: 80   # Container Port
