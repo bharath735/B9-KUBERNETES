@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-backend-service # VERY IMPORTANT - Used for NGINX proxy_pass
+  labels:
+    app: backend-restapp
+    tier: backend
+spec:
+  type: ClusterIP # Default service type in Kubernetes
+  selector:
+    app: backend-restapp # Matches pods with this label
+  ports:
+    - name: http
+      port: 8080       # Port exposed by the service
+      targetPort: 8080 # Port on the container
